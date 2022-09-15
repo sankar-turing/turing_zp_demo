@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graphql/client.dart';
+import 'package:turing_zp_demo/cubits/language/language_cubit.dart';
 import 'package:turing_zp_demo/di/dependency_injection.dart';
 import 'package:turing_zp_demo/models/graphql/clear_notification.graphql.dart';
 import 'package:turing_zp_demo/models/graphql/mark_read.graphql.dart';
@@ -32,7 +33,8 @@ class NotificationCubit extends Cubit<NotificationState> {
             input: InputNotificationList(
               count: 5,
               offset: currentOffset,
-              langCode: 'en',
+              langCode:
+                  getIt<LanguageCubit>().state.locale?.languageCode ?? 'en',
             ),
           ),
         ),

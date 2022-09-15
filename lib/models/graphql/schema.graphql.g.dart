@@ -6,6 +6,18 @@ part of 'schema.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+InputClearNotificationIn _$InputClearNotificationInFromJson(
+        Map<String, dynamic> json) =>
+    InputClearNotificationIn(
+      userId: json['userId'] as int?,
+    );
+
+Map<String, dynamic> _$InputClearNotificationInToJson(
+        InputClearNotificationIn instance) =>
+    <String, dynamic>{
+      'userId': instance.userId,
+    };
+
 InputMarkRead _$InputMarkReadFromJson(Map<String, dynamic> json) =>
     InputMarkRead(
       id: json['id'] as int,
@@ -31,6 +43,26 @@ Map<String, dynamic> _$InputNewNotificationToJson(
       'body': instance.body,
       'id': instance.id,
       'title': instance.title,
+      'userId': instance.userId,
+    };
+
+InputNewOrder _$InputNewOrderFromJson(Map<String, dynamic> json) =>
+    InputNewOrder(
+      products: (json['products'] as List<dynamic>)
+          .map((e) => e == null
+              ? null
+              : InputProductDetailIn.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      status: json['status'] as String,
+      totalCost: (json['totalCost'] as num).toDouble(),
+      userId: json['userId'] as int,
+    );
+
+Map<String, dynamic> _$InputNewOrderToJson(InputNewOrder instance) =>
+    <String, dynamic>{
+      'products': instance.products.map((e) => e?.toJson()).toList(),
+      'status': instance.status,
+      'totalCost': instance.totalCost,
       'userId': instance.userId,
     };
 
@@ -62,6 +94,7 @@ InputNotificationList _$InputNotificationListFromJson(
       count: json['count'] as int?,
       langCode: json['langCode'] as String?,
       offset: json['offset'] as int?,
+      userId: json['userId'] as int?,
     );
 
 Map<String, dynamic> _$InputNotificationListToJson(
@@ -70,6 +103,39 @@ Map<String, dynamic> _$InputNotificationListToJson(
       'count': instance.count,
       'langCode': instance.langCode,
       'offset': instance.offset,
+      'userId': instance.userId,
+    };
+
+InputOrderListingQuery _$InputOrderListingQueryFromJson(
+        Map<String, dynamic> json) =>
+    InputOrderListingQuery(
+      count: json['count'] as int?,
+      offset: json['offset'] as int?,
+      userId: json['userId'] as int?,
+    );
+
+Map<String, dynamic> _$InputOrderListingQueryToJson(
+        InputOrderListingQuery instance) =>
+    <String, dynamic>{
+      'count': instance.count,
+      'offset': instance.offset,
+      'userId': instance.userId,
+    };
+
+InputProductDetailIn _$InputProductDetailInFromJson(
+        Map<String, dynamic> json) =>
+    InputProductDetailIn(
+      count: json['count'] as int,
+      name: json['name'] as String,
+      pricePerUnit: (json['pricePerUnit'] as num).toDouble(),
+    );
+
+Map<String, dynamic> _$InputProductDetailInToJson(
+        InputProductDetailIn instance) =>
+    <String, dynamic>{
+      'count': instance.count,
+      'name': instance.name,
+      'pricePerUnit': instance.pricePerUnit,
     };
 
 InputRegisterToken _$InputRegisterTokenFromJson(Map<String, dynamic> json) =>

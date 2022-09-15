@@ -6,10 +6,11 @@ schema {
 }
 
 type Mutation {
-    clearNotification: Boolean!
+    clearNotification(input: ClearNotificationIn): Boolean!
     createNotification(input: NewNotification!): Notification!
     createSimpleNotification(input: NewSimpleNotification): SimpleNotification!
     markRead(input: MarkRead): SimpleNotification!
+    newOrder(input: NewOrder): OrderDetail
     registerToken(input: RegisterToken): Boolean!
 }
 
@@ -27,8 +28,29 @@ type Notifications {
     notifications: [Notification!]
 }
 
+type OrderDetail {
+    orderDate: String!
+    orderId: Int!
+    products: [ProductDetail]
+    status: String!
+    totalCost: Float!
+    userId: Int!
+}
+
+type OrderListResponse {
+    nextOffset: Int!
+    orders: [OrderDetail]!
+}
+
+type ProductDetail {
+    count: Int!
+    name: String!
+    pricePerUnit: Float!
+}
+
 type Query {
     notifications(count: Int = 10, offset: Int = 0): Notifications!
+    orders(input: OrderListingQuery): OrderListResponse
     simpleNotifications(input: NotificationList): SimpleNotifications!
 }
 
@@ -49,6 +71,10 @@ type SimpleNotifications {
     notifications: [SimpleNotification!]
 }
 
+input ClearNotificationIn {
+    userId: Int
+}
+
 input MarkRead {
     id: Int!
 }
@@ -57,6 +83,13 @@ input NewNotification {
     body: String!
     id: ID!
     title: String!
+    userId: Int!
+}
+
+input NewOrder {
+    products: [ProductDetailIn]!
+    status: String!
+    totalCost: Float!
     userId: Int!
 }
 
@@ -73,6 +106,19 @@ input NotificationList {
     count: Int
     langCode: String
     offset: Int
+    userId: Int
+}
+
+input OrderListingQuery {
+    count: Int
+    offset: Int
+    userId: Int
+}
+
+input ProductDetailIn {
+    count: Int!
+    name: String!
+    pricePerUnit: Float!
 }
 
 input RegisterToken {

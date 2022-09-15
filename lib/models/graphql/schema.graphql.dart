@@ -2,6 +2,71 @@ import 'package:json_annotation/json_annotation.dart';
 part 'schema.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
+class InputClearNotificationIn {
+  InputClearNotificationIn({this.userId});
+
+  @override
+  factory InputClearNotificationIn.fromJson(Map<String, dynamic> json) =>
+      _$InputClearNotificationInFromJson(json);
+
+  final int? userId;
+
+  Map<String, dynamic> toJson() => _$InputClearNotificationInToJson(this);
+  int get hashCode {
+    final l$userId = userId;
+    return Object.hashAll([l$userId]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is InputClearNotificationIn) ||
+        runtimeType != other.runtimeType) return false;
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) return false;
+    return true;
+  }
+
+  CopyWith$InputClearNotificationIn<InputClearNotificationIn> get copyWith =>
+      CopyWith$InputClearNotificationIn(this, (i) => i);
+}
+
+abstract class CopyWith$InputClearNotificationIn<TRes> {
+  factory CopyWith$InputClearNotificationIn(InputClearNotificationIn instance,
+          TRes Function(InputClearNotificationIn) then) =
+      _CopyWithImpl$InputClearNotificationIn;
+
+  factory CopyWith$InputClearNotificationIn.stub(TRes res) =
+      _CopyWithStubImpl$InputClearNotificationIn;
+
+  TRes call({int? userId});
+}
+
+class _CopyWithImpl$InputClearNotificationIn<TRes>
+    implements CopyWith$InputClearNotificationIn<TRes> {
+  _CopyWithImpl$InputClearNotificationIn(this._instance, this._then);
+
+  final InputClearNotificationIn _instance;
+
+  final TRes Function(InputClearNotificationIn) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? userId = _undefined}) => _then(InputClearNotificationIn(
+      userId: userId == _undefined ? _instance.userId : (userId as int?)));
+}
+
+class _CopyWithStubImpl$InputClearNotificationIn<TRes>
+    implements CopyWith$InputClearNotificationIn<TRes> {
+  _CopyWithStubImpl$InputClearNotificationIn(this._res);
+
+  TRes _res;
+
+  call({int? userId}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
 class InputMarkRead {
   InputMarkRead({required this.id});
 
@@ -168,6 +233,143 @@ class _CopyWithStubImpl$InputNewNotification<TRes>
 }
 
 @JsonSerializable(explicitToJson: true)
+class InputNewOrder {
+  InputNewOrder(
+      {required this.products,
+      required this.status,
+      required this.totalCost,
+      required this.userId});
+
+  @override
+  factory InputNewOrder.fromJson(Map<String, dynamic> json) =>
+      _$InputNewOrderFromJson(json);
+
+  final List<InputProductDetailIn?> products;
+
+  final String status;
+
+  final double totalCost;
+
+  final int userId;
+
+  Map<String, dynamic> toJson() => _$InputNewOrderToJson(this);
+  int get hashCode {
+    final l$products = products;
+    final l$status = status;
+    final l$totalCost = totalCost;
+    final l$userId = userId;
+    return Object.hashAll([
+      Object.hashAll(l$products.map((v) => v)),
+      l$status,
+      l$totalCost,
+      l$userId
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is InputNewOrder) || runtimeType != other.runtimeType)
+      return false;
+    final l$products = products;
+    final lOther$products = other.products;
+    if (l$products.length != lOther$products.length) return false;
+    for (int i = 0; i < l$products.length; i++) {
+      final l$products$entry = l$products[i];
+      final lOther$products$entry = lOther$products[i];
+      if (l$products$entry != lOther$products$entry) return false;
+    }
+
+    final l$status = status;
+    final lOther$status = other.status;
+    if (l$status != lOther$status) return false;
+    final l$totalCost = totalCost;
+    final lOther$totalCost = other.totalCost;
+    if (l$totalCost != lOther$totalCost) return false;
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) return false;
+    return true;
+  }
+
+  CopyWith$InputNewOrder<InputNewOrder> get copyWith =>
+      CopyWith$InputNewOrder(this, (i) => i);
+}
+
+abstract class CopyWith$InputNewOrder<TRes> {
+  factory CopyWith$InputNewOrder(
+          InputNewOrder instance, TRes Function(InputNewOrder) then) =
+      _CopyWithImpl$InputNewOrder;
+
+  factory CopyWith$InputNewOrder.stub(TRes res) =
+      _CopyWithStubImpl$InputNewOrder;
+
+  TRes call(
+      {List<InputProductDetailIn?>? products,
+      String? status,
+      double? totalCost,
+      int? userId});
+  TRes products(
+      Iterable<InputProductDetailIn?> Function(
+              Iterable<CopyWith$InputProductDetailIn<InputProductDetailIn>?>)
+          _fn);
+}
+
+class _CopyWithImpl$InputNewOrder<TRes>
+    implements CopyWith$InputNewOrder<TRes> {
+  _CopyWithImpl$InputNewOrder(this._instance, this._then);
+
+  final InputNewOrder _instance;
+
+  final TRes Function(InputNewOrder) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? products = _undefined,
+          Object? status = _undefined,
+          Object? totalCost = _undefined,
+          Object? userId = _undefined}) =>
+      _then(InputNewOrder(
+          products: products == _undefined || products == null
+              ? _instance.products
+              : (products as List<InputProductDetailIn?>),
+          status: status == _undefined || status == null
+              ? _instance.status
+              : (status as String),
+          totalCost: totalCost == _undefined || totalCost == null
+              ? _instance.totalCost
+              : (totalCost as double),
+          userId: userId == _undefined || userId == null
+              ? _instance.userId
+              : (userId as int)));
+  TRes products(
+          Iterable<InputProductDetailIn?> Function(
+                  Iterable<
+                      CopyWith$InputProductDetailIn<InputProductDetailIn>?>)
+              _fn) =>
+      call(
+          products: _fn(_instance.products.map((e) => e == null
+              ? null
+              : CopyWith$InputProductDetailIn(e, (i) => i))).toList());
+}
+
+class _CopyWithStubImpl$InputNewOrder<TRes>
+    implements CopyWith$InputNewOrder<TRes> {
+  _CopyWithStubImpl$InputNewOrder(this._res);
+
+  TRes _res;
+
+  call(
+          {List<InputProductDetailIn?>? products,
+          String? status,
+          double? totalCost,
+          int? userId}) =>
+      _res;
+  products(_fn) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
 class InputNewSimpleNotification {
   InputNewSimpleNotification(
       {required this.hyperLink,
@@ -316,7 +518,7 @@ class _CopyWithStubImpl$InputNewSimpleNotification<TRes>
 
 @JsonSerializable(explicitToJson: true)
 class InputNotificationList {
-  InputNotificationList({this.count, this.langCode, this.offset});
+  InputNotificationList({this.count, this.langCode, this.offset, this.userId});
 
   @override
   factory InputNotificationList.fromJson(Map<String, dynamic> json) =>
@@ -328,12 +530,15 @@ class InputNotificationList {
 
   final int? offset;
 
+  final int? userId;
+
   Map<String, dynamic> toJson() => _$InputNotificationListToJson(this);
   int get hashCode {
     final l$count = count;
     final l$langCode = langCode;
     final l$offset = offset;
-    return Object.hashAll([l$count, l$langCode, l$offset]);
+    final l$userId = userId;
+    return Object.hashAll([l$count, l$langCode, l$offset, l$userId]);
   }
 
   @override
@@ -350,6 +555,9 @@ class InputNotificationList {
     final l$offset = offset;
     final lOther$offset = other.offset;
     if (l$offset != lOther$offset) return false;
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) return false;
     return true;
   }
 
@@ -365,7 +573,7 @@ abstract class CopyWith$InputNotificationList<TRes> {
   factory CopyWith$InputNotificationList.stub(TRes res) =
       _CopyWithStubImpl$InputNotificationList;
 
-  TRes call({int? count, String? langCode, int? offset});
+  TRes call({int? count, String? langCode, int? offset, int? userId});
 }
 
 class _CopyWithImpl$InputNotificationList<TRes>
@@ -381,13 +589,15 @@ class _CopyWithImpl$InputNotificationList<TRes>
   TRes call(
           {Object? count = _undefined,
           Object? langCode = _undefined,
-          Object? offset = _undefined}) =>
+          Object? offset = _undefined,
+          Object? userId = _undefined}) =>
       _then(InputNotificationList(
           count: count == _undefined ? _instance.count : (count as int?),
           langCode: langCode == _undefined
               ? _instance.langCode
               : (langCode as String?),
-          offset: offset == _undefined ? _instance.offset : (offset as int?)));
+          offset: offset == _undefined ? _instance.offset : (offset as int?),
+          userId: userId == _undefined ? _instance.userId : (userId as int?)));
 }
 
 class _CopyWithStubImpl$InputNotificationList<TRes>
@@ -396,7 +606,180 @@ class _CopyWithStubImpl$InputNotificationList<TRes>
 
   TRes _res;
 
-  call({int? count, String? langCode, int? offset}) => _res;
+  call({int? count, String? langCode, int? offset, int? userId}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class InputOrderListingQuery {
+  InputOrderListingQuery({this.count, this.offset, this.userId});
+
+  @override
+  factory InputOrderListingQuery.fromJson(Map<String, dynamic> json) =>
+      _$InputOrderListingQueryFromJson(json);
+
+  final int? count;
+
+  final int? offset;
+
+  final int? userId;
+
+  Map<String, dynamic> toJson() => _$InputOrderListingQueryToJson(this);
+  int get hashCode {
+    final l$count = count;
+    final l$offset = offset;
+    final l$userId = userId;
+    return Object.hashAll([l$count, l$offset, l$userId]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is InputOrderListingQuery) || runtimeType != other.runtimeType)
+      return false;
+    final l$count = count;
+    final lOther$count = other.count;
+    if (l$count != lOther$count) return false;
+    final l$offset = offset;
+    final lOther$offset = other.offset;
+    if (l$offset != lOther$offset) return false;
+    final l$userId = userId;
+    final lOther$userId = other.userId;
+    if (l$userId != lOther$userId) return false;
+    return true;
+  }
+
+  CopyWith$InputOrderListingQuery<InputOrderListingQuery> get copyWith =>
+      CopyWith$InputOrderListingQuery(this, (i) => i);
+}
+
+abstract class CopyWith$InputOrderListingQuery<TRes> {
+  factory CopyWith$InputOrderListingQuery(InputOrderListingQuery instance,
+          TRes Function(InputOrderListingQuery) then) =
+      _CopyWithImpl$InputOrderListingQuery;
+
+  factory CopyWith$InputOrderListingQuery.stub(TRes res) =
+      _CopyWithStubImpl$InputOrderListingQuery;
+
+  TRes call({int? count, int? offset, int? userId});
+}
+
+class _CopyWithImpl$InputOrderListingQuery<TRes>
+    implements CopyWith$InputOrderListingQuery<TRes> {
+  _CopyWithImpl$InputOrderListingQuery(this._instance, this._then);
+
+  final InputOrderListingQuery _instance;
+
+  final TRes Function(InputOrderListingQuery) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? count = _undefined,
+          Object? offset = _undefined,
+          Object? userId = _undefined}) =>
+      _then(InputOrderListingQuery(
+          count: count == _undefined ? _instance.count : (count as int?),
+          offset: offset == _undefined ? _instance.offset : (offset as int?),
+          userId: userId == _undefined ? _instance.userId : (userId as int?)));
+}
+
+class _CopyWithStubImpl$InputOrderListingQuery<TRes>
+    implements CopyWith$InputOrderListingQuery<TRes> {
+  _CopyWithStubImpl$InputOrderListingQuery(this._res);
+
+  TRes _res;
+
+  call({int? count, int? offset, int? userId}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class InputProductDetailIn {
+  InputProductDetailIn(
+      {required this.count, required this.name, required this.pricePerUnit});
+
+  @override
+  factory InputProductDetailIn.fromJson(Map<String, dynamic> json) =>
+      _$InputProductDetailInFromJson(json);
+
+  final int count;
+
+  final String name;
+
+  final double pricePerUnit;
+
+  Map<String, dynamic> toJson() => _$InputProductDetailInToJson(this);
+  int get hashCode {
+    final l$count = count;
+    final l$name = name;
+    final l$pricePerUnit = pricePerUnit;
+    return Object.hashAll([l$count, l$name, l$pricePerUnit]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is InputProductDetailIn) || runtimeType != other.runtimeType)
+      return false;
+    final l$count = count;
+    final lOther$count = other.count;
+    if (l$count != lOther$count) return false;
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) return false;
+    final l$pricePerUnit = pricePerUnit;
+    final lOther$pricePerUnit = other.pricePerUnit;
+    if (l$pricePerUnit != lOther$pricePerUnit) return false;
+    return true;
+  }
+
+  CopyWith$InputProductDetailIn<InputProductDetailIn> get copyWith =>
+      CopyWith$InputProductDetailIn(this, (i) => i);
+}
+
+abstract class CopyWith$InputProductDetailIn<TRes> {
+  factory CopyWith$InputProductDetailIn(InputProductDetailIn instance,
+          TRes Function(InputProductDetailIn) then) =
+      _CopyWithImpl$InputProductDetailIn;
+
+  factory CopyWith$InputProductDetailIn.stub(TRes res) =
+      _CopyWithStubImpl$InputProductDetailIn;
+
+  TRes call({int? count, String? name, double? pricePerUnit});
+}
+
+class _CopyWithImpl$InputProductDetailIn<TRes>
+    implements CopyWith$InputProductDetailIn<TRes> {
+  _CopyWithImpl$InputProductDetailIn(this._instance, this._then);
+
+  final InputProductDetailIn _instance;
+
+  final TRes Function(InputProductDetailIn) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? count = _undefined,
+          Object? name = _undefined,
+          Object? pricePerUnit = _undefined}) =>
+      _then(InputProductDetailIn(
+          count: count == _undefined || count == null
+              ? _instance.count
+              : (count as int),
+          name: name == _undefined || name == null
+              ? _instance.name
+              : (name as String),
+          pricePerUnit: pricePerUnit == _undefined || pricePerUnit == null
+              ? _instance.pricePerUnit
+              : (pricePerUnit as double)));
+}
+
+class _CopyWithStubImpl$InputProductDetailIn<TRes>
+    implements CopyWith$InputProductDetailIn<TRes> {
+  _CopyWithStubImpl$InputProductDetailIn(this._res);
+
+  TRes _res;
+
+  call({int? count, String? name, double? pricePerUnit}) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
