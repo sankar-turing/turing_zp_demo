@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 extension LocaleExtension on BuildContext {
-  S get loc => S.of(this);
+  AppLocalizations get loc => AppLocalizations.of(this)!;
 }

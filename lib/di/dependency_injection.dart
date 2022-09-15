@@ -17,7 +17,5 @@ void initializeDependencyInjection() {
     () => NotificationCubit(),
   );
 
-  getIt.registerLazySingleton<LanguageCubit>(
-    () => LanguageCubit(),
-  );
+  getIt.registerSingleton<LanguageCubit>(LanguageCubit());
 }

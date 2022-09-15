@@ -1,15 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:turing_zp_demo/cubits/language/language_cubit.dart';
 import 'package:turing_zp_demo/di/dependency_injection.dart';
 import 'package:turing_zp_demo/notifications/notification_utils.dart';
 import 'package:turing_zp_demo/screens/home/home_screen.dart';
 import 'package:turing_zp_demo/utils/language_constants.dart';
-
-import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +22,7 @@ void main() async {
   );
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({
     Key? key,
     required this.currentLocale,
@@ -33,23 +31,11 @@ class MyApp extends StatefulWidget {
   final Locale currentLocale;
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  Locale? _locale;
-
-  @override
-  initState() {
-    super.initState();
-    _locale = widget.currentLocale;
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<LanguageCubit, LanguageState>(
-      bloc: getIt.get<LanguageCubit>(),
+      bloc: getIt<LanguageCubit>()..setLocale(currentLocale),
       builder: (context, state) {
+        Get.updateLocale(state.locale!);
         return GetMaterialApp(
           theme: ThemeData(
             primarySwatch: Colors.blue,
@@ -63,24 +49,9 @@ class _MyAppState extends State<MyApp> {
           ),
           debugShowCheckedModeBanner: false,
           home: const HomeScreen(),
-          locale: state.locale ?? _locale,
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          localeResolutionCallback:
-              (Locale? locale, Iterable<Locale> supportedLocales) {
-            for (var supportedLocale in supportedLocales) {
-              if (supportedLocale.languageCode == locale?.languageCode &&
-                  supportedLocale.countryCode == locale?.countryCode) {
-                return supportedLocale;
-              }
-            }
-            return supportedLocales.first;
-          },
+          locale: state.locale,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
         );
       },
     );
