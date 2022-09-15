@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
+import 'package:turing_zp_demo/controllers/notification_controller.dart';
 import 'package:turing_zp_demo/cubits/language/language_cubit.dart';
 import 'package:turing_zp_demo/di/dependency_injection.dart';
-import 'package:turing_zp_demo/notifications/notification_utils.dart';
 import 'package:turing_zp_demo/screens/home/home_screen.dart';
 import 'package:turing_zp_demo/utils/language_constants.dart';
 
@@ -13,7 +13,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   initializeDependencyInjection();
-  NotificationUtils.setUpOnReceiveNotification();
+  setupNotifications();
+  //NotificationUtils.setUpOnReceiveNotification();
   Locale currentLocale = await getLocale();
   runApp(
     MyApp(
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
             appBarTheme: const AppBarTheme(
               backgroundColor: Color(0xFF2D5E64),
             ),
+            elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xFF2D5E64)), textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.white, fontSize: 15)), shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))), minimumSize: MaterialStateProperty.all(const Size(double.infinity, 45)))),
           ),
           debugShowCheckedModeBanner: false,
           home: const HomeScreen(),

@@ -23,8 +23,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
   String fcmToken = '';
   late int _currentIndex;
   late TabController tabController;
@@ -39,7 +38,8 @@ class _HomeScreenState extends State<HomeScreen>
       vsync: this,
       initialIndex: widget.initialIndex,
     );
-    NotificationUtils().setUpNotifications();
+
+    // NotificationUtils().setUpNotifications();
     getIt<NotificationCubit>().registerToken(null);
     getIt<NotificationCubit>().getSimpleNotifications(offset: 0);
     _timer = Timer.periodic(const Duration(seconds: 5), (timer) {

@@ -19,13 +19,15 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^1.22.0
   firebase_messaging: ^13.0.1
-  flutter_local_notifications: ^9.9.1
+  #flutter_local_notifications: ^9.9.1
+  awesome_notifications: 0.6.21
   get: ^4.6.5
   graphql: ^5.1.1
   get_it: ^7.2.0
   flutter_bloc: ^8.1.1
   equatable: ^2.0.5
   shared_preferences: ^2.0.15
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:
