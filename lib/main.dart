@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:turing_zp_demo/cubits/language/language_cubit.dart';
 import 'package:turing_zp_demo/di/dependency_injection.dart';
 import 'package:turing_zp_demo/notifications/notification_utils.dart';
 import 'package:turing_zp_demo/screens/home/home_screen.dart';
@@ -30,23 +32,12 @@ class MyApp extends StatefulWidget {
 
   final Locale currentLocale;
 
-  static void setLocale(BuildContext context, Locale newLocale) {
-    _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
-    state?.setLocale(newLocale);
-  }
-
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
-
-  setLocale(Locale locale) {
-    setState(() {
-      _locale = locale;
-    });
-  }
 
   @override
   initState() {
@@ -56,36 +47,41 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: const Color(0xFF2D5E64),
-        colorScheme: ColorScheme.fromSwatch(
-          accentColor: const Color(0xFFC5D351),
-        ),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF2D5E64),
-        ),
-      ),
-      debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
-      locale: _locale,
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      localeResolutionCallback:
-          (Locale? locale, Iterable<Locale> supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale?.languageCode &&
-              supportedLocale.countryCode == locale?.countryCode) {
-            return supportedLocale;
-          }
-        }
-        return supportedLocales.first;
+    return BlocBuilder<LanguageCubit, LanguageState>(
+      bloc: getIt.get<LanguageCubit>(),
+      builder: (context, state) {
+        return GetMaterialApp(
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            primaryColor: const Color(0xFF2D5E64),
+            colorScheme: ColorScheme.fromSwatch(
+              accentColor: const Color(0xFFC5D351),
+            ),
+            appBarTheme: const AppBarTheme(
+              backgroundColor: Color(0xFF2D5E64),
+            ),
+          ),
+          debugShowCheckedModeBanner: false,
+          home: const HomeScreen(),
+          locale: state.locale ?? _locale,
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          localeResolutionCallback:
+              (Locale? locale, Iterable<Locale> supportedLocales) {
+            for (var supportedLocale in supportedLocales) {
+              if (supportedLocale.languageCode == locale?.languageCode &&
+                  supportedLocale.countryCode == locale?.countryCode) {
+                return supportedLocale;
+              }
+            }
+            return supportedLocales.first;
+          },
+        );
       },
     );
   }

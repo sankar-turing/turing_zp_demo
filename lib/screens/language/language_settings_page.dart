@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:turing_zp_demo/cubits/language/language_cubit.dart';
+import 'package:turing_zp_demo/di/dependency_injection.dart';
 import 'package:turing_zp_demo/screens/language/language.dart';
 import 'package:turing_zp_demo/utils/language_constants.dart';
 
 import '../../../generated/l10n.dart';
-import '../../../main.dart';
 
 class LanguageSettingsPage extends StatefulWidget {
   const LanguageSettingsPage({Key? key}) : super(key: key);
@@ -121,10 +122,10 @@ class _LanguageSettingsPageState extends State<LanguageSettingsPage> {
 }
 
 class SelectableWidget extends StatefulWidget {
-  final SelectableModel viewModel;
+  final SelectableModel selectData;
   final Function onTap;
 
-  const SelectableWidget(this.viewModel, this.onTap, {Key? key})
+  const SelectableWidget(this.selectData, this.onTap, {Key? key})
       : super(key: key);
 
   @override
@@ -134,11 +135,6 @@ class SelectableWidget extends StatefulWidget {
 }
 
 class SelectableWidgetState extends State<SelectableWidget> {
-  void _changeLanguage(String languageCode) async {
-    Locale locale = await setLocale(languageCode);
-    MyApp.setLocale(context, locale);
-  }
-
   @override
   void initState() {
     super.initState();
@@ -152,22 +148,22 @@ class SelectableWidgetState extends State<SelectableWidget> {
       child: Row(
         children: [
           Text(
-            widget.viewModel.language.flag,
+            widget.selectData.language.flag,
             style: const TextStyle(fontSize: 20),
           ),
           const SizedBox(width: 15),
           Expanded(
             child: Text(
               Localizations.localeOf(context).languageCode ==
-                      widget.viewModel.language.languageCode
-                  ? widget.viewModel.language.ownName
-                  : '${widget.viewModel.language.name} (${widget.viewModel.language.ownName})',
+                      widget.selectData.language.languageCode
+                  ? widget.selectData.language.ownName
+                  : '${widget.selectData.language.name} (${widget.selectData.language.ownName})',
               textAlign: TextAlign.start,
               style: const TextStyle(fontSize: 14),
             ),
           ),
           (Localizations.localeOf(context).languageCode ==
-                  widget.viewModel.language.languageCode)
+                  widget.selectData.language.languageCode)
               ? const Icon(
                   Icons.check_circle_outline,
                   color: Colors.red,
@@ -179,9 +175,8 @@ class SelectableWidgetState extends State<SelectableWidget> {
 
     return GestureDetector(
       onTap: () async {
-        _changeLanguage(widget.viewModel.language.languageCode);
-        widget.onTap();
-        setState(() {});
+        Locale locale = await setLocale(languageCode);
+        getIt<LanguageCubit>().setLocale(locale);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 1.0),
