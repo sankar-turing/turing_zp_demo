@@ -25,7 +25,7 @@ class NotificationService {
           <String, dynamic>{
             'notification': <String, dynamic>{'title': '$type notification', 'body': 'This is the notification body'},
             'priority': 'high',
-            'data': <String, dynamic>{'click_action': 'FLUTTER_NOTIFICATION_CLICK', 'id': Random().nextInt(1000), 'status': 'done', 'type': type, 'offer': 'This is a text is hardcoded for this button click. This box will show actual text when initiated from the console.'},
+            'data': <String, dynamic>{'click_action': 'FLUTTER_NOTIFICATION_CLICK', 'id': Random().nextInt(1000), 'status': 'done', 'type': type, 'offer': 'This is a text is hardcoded for this button click. This box will show actual text when initiated from the console'},
             'to': token,
           },
         ),
