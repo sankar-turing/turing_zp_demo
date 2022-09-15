@@ -14,21 +14,31 @@ class ProfileTab extends StatelessWidget {
       color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
-            const SizedBox(height: 10.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  Get.context!,
-                  MaterialPageRoute(
-                    builder: (context) => const LanguageSettingsPage(),
-                  ),
-                );
-              },
-              child: Text(
-                context.loc.settingsLanguagePageAppBarTitle,
+            Material(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                    Get.context!,
+                    MaterialPageRoute(
+                      builder: (context) => const LanguageSettingsPage(),
+                    ),
+                  );
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                tileColor: Theme.of(context).primaryColor,
+                iconColor: Colors.white,
+                textColor: Colors.white,
+                title: Text(
+                  context.loc.settingsLanguagePageAppBarTitle,
+                ),
+                trailing: const Icon(
+                  Icons.chevron_right,
+                  size: 30.0,
+                ),
               ),
             ),
           ],

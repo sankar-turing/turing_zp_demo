@@ -7,16 +7,14 @@ class LanguageModel {
   final String ownName;
   final String name;
   final String languageCode;
-  final bool isSelected;
 
   LanguageModel(
     this.id,
     this.flag,
     this.ownName,
     this.name,
-    this.languageCode, {
-    this.isSelected = false,
-  });
+    this.languageCode,
+  );
 
   static List<LanguageModel> languageList() {
     return <LanguageModel>[
