@@ -1,0 +1,16 @@
+query Notifications ($count: Int, $offset: Int) {
+    notifications (
+        count: $count,
+        offset: $offset
+    ) {
+        __typename
+        notifications {
+            id
+            title
+            body
+            userId
+            read
+        }
+        nextOffset
+    }
+}

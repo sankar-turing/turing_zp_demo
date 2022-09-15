@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "536162161289",
+    "project_id": "notification-demo-bc278",
+    "storage_bucket": "notification-demo-bc278.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536162161289:android:fc498c5c61fe03b69a6c58",
+        "android_client_info": {
+          "package_name": "com.example.turing_zp_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536162161289-lu1v6207k6gnjupvv21o6dtr6ad8bsq4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0yMyRQonko1xhZdOD5Q2mFuKZ7bzIyEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "536162161289-lu1v6207k6gnjupvv21o6dtr6ad8bsq4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,15 @@
+mutation MarkReadMutation ($input: MarkRead) {
+    markRead (
+        input: $input
+    ) {
+        __typename
+        id
+        orderId
+        orderType
+        status
+        orderDescription
+        hyperLink
+        createdTime
+        userId
+    }
+}

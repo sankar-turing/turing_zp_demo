@@ -1,0 +1,81 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Mutation {
+    clearNotification: Boolean!
+    createNotification(input: NewNotification!): Notification!
+    createSimpleNotification(input: NewSimpleNotification): SimpleNotification!
+    markRead(input: MarkRead): SimpleNotification!
+    registerToken(input: RegisterToken): Boolean!
+}
+
+type Notification {
+    body: String!
+    id: ID!
+    langCode: String!
+    read: Boolean!
+    title: String!
+    userId: Int!
+}
+
+type Notifications {
+    nextOffset: Int!
+    notifications: [Notification!]
+}
+
+type Query {
+    notifications(count: Int = 10, offset: Int = 0): Notifications!
+    simpleNotifications(input: NotificationList): SimpleNotifications!
+}
+
+type SimpleNotification {
+    createdTime: String!
+    hyperLink: String!
+    id: Int!
+    langCode: String!
+    orderDescription: String!
+    orderId: Int!
+    orderType: String!
+    status: Boolean!
+    userId: Int!
+}
+
+type SimpleNotifications {
+    nextOffset: Int!
+    notifications: [SimpleNotification!]
+}
+
+input MarkRead {
+    id: Int!
+}
+
+input NewNotification {
+    body: String!
+    id: ID!
+    title: String!
+    userId: Int!
+}
+
+input NewSimpleNotification {
+    hyperLink: String!
+    langCode: String!
+    orderDescription: String!
+    orderId: Int!
+    orderType: String!
+    userId: Int!
+}
+
+input NotificationList {
+    count: Int
+    langCode: String
+    offset: Int
+}
+
+input RegisterToken {
+    token: String!
+    userId: Int!
+}

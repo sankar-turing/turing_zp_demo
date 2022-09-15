@@ -1,0 +1,12 @@
+mutation CreateNotification ($input: NewNotification!) {
+    createNotification (
+        input: $input
+    ) {
+        __typename
+        id
+        title
+        body
+        userId
+        read
+    }
+}

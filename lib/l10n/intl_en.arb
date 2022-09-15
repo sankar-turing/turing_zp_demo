@@ -1,0 +1,16 @@
+{
+  "home": "Home",
+  "orders": "Orders",
+  "notifications": "Notifications",
+  "profile": "Profile",
+  "getToken": "Get Token",
+  "status": "Status",
+  "orderDetail": "Order Detail",
+  "token": "Token",
+  "noNotificationAvailable": "No new notifications",
+  "clearNotifications": "Clear Notifications",
+  "languageSettingsNameEnglish": "English",
+  "languageSettingsNameHindi": "हिन्दी",
+  "search": "Search",
+  "settingsLanguagePageAppBarTitle": "Select language"
+}

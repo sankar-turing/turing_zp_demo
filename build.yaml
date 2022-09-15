@@ -1,0 +1,21 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - $package$
+    builders:
+      graphql_codegen:
+        options:
+          namingSeparator: ''
+          scalars:
+            Mixed:
+              type: dynamic
+            Date:
+              type: String
+            DateTime:
+              type: DateTime
+          clients:
+            - graphql
+          scopes:
+            - lib/data/graphql/**.graphql
+          outputDirectory: ../../../models/graphql/

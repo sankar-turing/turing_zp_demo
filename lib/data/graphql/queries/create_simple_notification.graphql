@@ -1,0 +1,15 @@
+mutation CreateSimpleNotification ($input: NewSimpleNotification) {
+    createSimpleNotification (
+        input: $input
+    ) {
+        __typename
+        id
+        orderId
+        orderType
+        status
+        orderDescription
+        hyperLink
+        createdTime
+        userId
+    }
+}

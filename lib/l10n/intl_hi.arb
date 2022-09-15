@@ -1,0 +1,16 @@
+{
+  "home": "घर",
+  "orders": "आदेश",
+  "notifications": "सूचनाएं",
+  "profile": "प्रोफाइल",
+  "getToken": "टोकन प्राप्त करें",
+  "status": "स्थिति",
+  "orderDetail": "आदेश विवरण",
+  "token": "टोकन",
+  "noNotificationAvailable": "कोई नए संदेश नहीं",
+  "clearNotifications": "क्लियर नोटिफिकेशन",
+  "languageSettingsNameEnglish": "English",
+  "languageSettingsNameHindi": "हिन्दी",
+  "search": "तलाशी",
+  "settingsLanguagePageAppBarTitle": "भाषा का चयन करें"
+}

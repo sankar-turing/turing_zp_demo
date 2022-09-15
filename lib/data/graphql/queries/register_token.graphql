@@ -1,0 +1,5 @@
+mutation RegisterTokenMutation ($input: RegisterToken) {
+    registerToken (
+        input: $input
+    )
+}

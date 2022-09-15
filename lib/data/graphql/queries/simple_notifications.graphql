@@ -1,0 +1,19 @@
+query SimpleNotifications ($input: NotificationList) {
+    simpleNotifications (
+        input: $input
+    ) {
+        __typename
+        nextOffset
+        notifications {
+            createdTime
+            hyperLink
+            id
+            langCode
+            orderDescription
+            orderId
+            orderType
+            status
+            userId
+        }
+    }
+}
