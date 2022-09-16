@@ -29,40 +29,68 @@ class HomeTab extends StatelessWidget {
               fcmToken,
               style: Theme.of(context).textTheme.subtitle2,
             ),
-            const Text('Notifications', textScaleFactor: 1.75),
+            Text(
+              context.loc.notifications,
+              textScaleFactor: 1.75,
+            ),
             const SizedBox(height: 15),
             ElevatedButton(
               onPressed: () => notificationService.sendLocalNotification(),
-              child: const Text('Send a local notification'),
+              child: Text(
+                context.loc.send_a_local_notification,
+              ),
             ),
             const SizedBox(height: 15),
             ElevatedButton(
-              onPressed: () async => await notificationService.sendNotification('Cloud'),
-              child: const Text('Send a Push notification'),
+              onPressed: () async => await notificationService.sendNotification(
+                context.loc.cloud,
+              ),
+              child: Text(
+                context.loc.send_a_push_notification,
+              ),
             ),
             const Divider(height: 50),
-            const Text('In-App Messaging', textScaleFactor: 1.75),
+            Text(
+              context.loc.in_app_messaging,
+              textScaleFactor: 1.75,
+            ),
             const SizedBox(height: 15),
             ElevatedButton(
-              onPressed: () async => await notificationService.sendNotification('inapp'),
-              child: const Text('Send custom in-app message'),
+              onPressed: () async => await notificationService.sendNotification(
+                'inapp',
+              ),
+              child: Text(
+                context.loc.send_custom_in_app_message,
+              ),
             ),
             const Divider(height: 50),
-            const Text('Other Local Notifiers', textScaleFactor: 1.75),
+            Text(
+              context.loc.other_local_notifiers,
+              textScaleFactor: 1.75,
+            ),
             const SizedBox(height: 15),
             ElevatedButton(
               onPressed: () => notificationService.showSnackBar(),
-              child: const Text('Show snack-bar'),
+              child: Text(
+                context.loc.show_snack_bar,
+              ),
             ),
             const SizedBox(height: 15),
             ElevatedButton(
               onPressed: () => notificationService.showToast(),
-              child: const Text('Show toast'),
+              child: Text(
+                context.loc.show_toast,
+              ),
             ),
             const SizedBox(height: 15),
             ElevatedButton(
-              onPressed: () => notificationService.showPopup('Sample popup', 'This is a sample dialog'),
-              child: const Text('Show popup'),
+              onPressed: () => notificationService.showPopup(
+                context.loc.sample_popup,
+                context.loc.this_is_a_sample_dialog,
+              ),
+              child: Text(
+                context.loc.show_popup,
+              ),
             ),
           ],
         ),

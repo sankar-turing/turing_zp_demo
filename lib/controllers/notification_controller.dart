@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:turing_zp_demo/services/notification_service.dart';
+import 'package:turing_zp_demo/utils/extensions.dart';
 
 setupNotifications() {
   //1. Initialize Notification Channels
@@ -11,14 +12,16 @@ setupNotifications() {
 
   //2. Request Notification Permissions
   AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
-    if (!isAllowed) AwesomeNotifications().requestPermissionToSendNotifications();
+    if (!isAllowed)
+      AwesomeNotifications().requestPermissionToSendNotifications();
   });
 
   //3. Initialize Firebase Background Handler
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);
 
   //4. Listen and Show Notifications
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) => showNotification(message));
+  FirebaseMessaging.onMessage
+      .listen((RemoteMessage message) => showNotification(message));
 }
 
 Future<void> backgroundHandler(RemoteMessage? message) async {
@@ -40,7 +43,7 @@ showNotification(RemoteMessage message) async {
     );
   } else {
     final notificationService = Get.find<NotificationService>();
-    String title = 'This is an in-app message';
+    String title = Get.context?.loc.this_is_an_in_app_message ?? '';
     String content = message.data['offer'] ?? '';
     notificationService.showPopup(title, content);
   }
