@@ -51,12 +51,10 @@ class _NotificationTabState extends State<NotificationTab> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  context.loc.notifications,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16.0,
-                    color: Color(0xFF234455),
+                Center(
+                  child: Text(
+                    context.loc.notifications,
+                    textScaleFactor: 1.75,
                   ),
                 ),
                 const SizedBox(height: 16.0),
@@ -69,8 +67,7 @@ class _NotificationTabState extends State<NotificationTab> {
                               itemCount: notificationLength,
                               itemBuilder: (context, index) {
                                 return NotificationCard(
-                                  notificationData:
-                                      state.notificationsList?[index],
+                                  notificationData: state.notificationsList?[index],
                                 );
                               },
                             )
@@ -96,8 +93,7 @@ class _NotificationTabState extends State<NotificationTab> {
                         child: Material(
                           child: InkWell(
                             onTap: () {
-                              getIt<NotificationCubit>()
-                                  .clearAllNotifications();
+                              getIt<NotificationCubit>().clearAllNotifications();
                             },
                             child: Container(
                               decoration: BoxDecoration(

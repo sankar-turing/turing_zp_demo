@@ -46,8 +46,9 @@ class MyApp extends StatelessWidget {
             ),
             appBarTheme: const AppBarTheme(
               backgroundColor: Color(0xFF2D5E64),
+              centerTitle: true,
             ),
-            elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xFF2D5E64)), textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.white, fontSize: 15)), shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))), minimumSize: MaterialStateProperty.all(const Size(double.infinity, 45)))),
+            elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xFF2D5E64)), textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.white, fontSize: 17)), shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))), minimumSize: MaterialStateProperty.all(const Size(double.infinity, 45)))),
           ),
           debugShowCheckedModeBanner: false,
           home: const HomeScreen(),

@@ -11,12 +11,12 @@ class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Colors.grey.shade200,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: [
-            Material(
+            Card(
               child: ListTile(
                 onTap: () {
                   Navigator.push(
@@ -29,9 +29,9 @@ class ProfileTab extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                tileColor: Theme.of(context).primaryColor,
-                iconColor: Colors.white,
-                textColor: Colors.white,
+                //tileColor: Theme.of(context).primaryColor,
+                //iconColor: Colors.white,
+                // textColor: Colors.white,
                 title: Text(
                   context.loc.settingsLanguagePageAppBarTitle,
                 ),

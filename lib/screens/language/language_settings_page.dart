@@ -18,7 +18,7 @@ class LanguageSettingsPage extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+          padding: const EdgeInsets.all(20),
           child: ListView.separated(
             itemCount: supportedLanguages.length,
             itemBuilder: (context, index) {

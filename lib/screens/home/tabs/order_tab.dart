@@ -18,6 +18,7 @@ class OrderTab extends StatelessWidget {
             children: [
               Text(
                 context.loc.orders,
+                style: const TextStyle(fontSize: 17),
               ),
             ],
           ),

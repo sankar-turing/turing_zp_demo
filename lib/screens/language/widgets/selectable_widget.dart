@@ -19,13 +19,13 @@ class SelectableWidget extends StatelessWidget {
     return BlocBuilder<LanguageCubit, LanguageState>(
       bloc: languageCubit,
       builder: (context, state) {
-        return GestureDetector(
+        return InkWell(
           onTap: () async {
             Locale locale = await setLocale(languageData.languageCode);
             languageCubit.setLocale(locale);
           },
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 1.0),
+            padding: const EdgeInsets.symmetric(vertical: 15),
             child: Row(
               children: [
                 Text(
@@ -35,11 +35,9 @@ class SelectableWidget extends StatelessWidget {
                 const SizedBox(width: 15),
                 Expanded(
                   child: Text(
-                    state.locale?.languageCode == languageData.languageCode
-                        ? languageData.ownName
-                        : '${languageData.name} (${languageData.ownName})',
+                    state.locale?.languageCode == languageData.languageCode ? languageData.ownName : '${languageData.name} (${languageData.ownName})',
                     textAlign: TextAlign.start,
-                    style: const TextStyle(fontSize: 14),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
                 (state.locale?.languageCode == languageData.languageCode)

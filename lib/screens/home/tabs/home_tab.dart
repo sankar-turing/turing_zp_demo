@@ -22,13 +22,13 @@ class HomeTab extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              '${context.loc.token}: ',
-            ),
-            SelectableText(
-              fcmToken,
-              style: Theme.of(context).textTheme.subtitle2,
-            ),
+            // Text(
+            //   '${context.loc.token}: ',
+            // ),
+            // SelectableText(
+            //   fcmToken,
+            //   style: Theme.of(context).textTheme.subtitle2,
+            // ),
             Text(
               context.loc.notifications,
               textScaleFactor: 1.75,

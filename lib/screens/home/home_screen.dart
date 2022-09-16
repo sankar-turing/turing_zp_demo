@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:turing_zp_demo/cubits/notifications/notification_cubit.dart';
 import 'package:turing_zp_demo/di/dependency_injection.dart';
-import 'package:turing_zp_demo/notifications/notification_utils.dart';
 import 'package:turing_zp_demo/screens/home/tabs/home_tab.dart';
 import 'package:turing_zp_demo/screens/home/tabs/notification_tab.dart';
 import 'package:turing_zp_demo/screens/home/tabs/order_tab.dart';
@@ -129,17 +128,17 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           ),
         ],
       ),
-      floatingActionButton: (_currentIndex == 0)
-          ? FloatingActionButton(
-              onPressed: () async {
-                fcmToken = await NotificationUtils.getDeviceToken() ?? '';
-                setState(() {});
-                print(fcmToken);
-              },
-              tooltip: context.loc.getToken,
-              child: const Icon(Icons.refresh),
-            )
-          : null, // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: (_currentIndex == 0)
+      //     ? FloatingActionButton(
+      //         onPressed: () async {
+      //           fcmToken = await NotificationUtils.getDeviceToken() ?? '';
+      //           setState(() {});
+      //           print(fcmToken);
+      //         },
+      //         tooltip: context.loc.getToken,
+      //         child: const Icon(Icons.refresh),
+      //       )
+      //     : null, // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
